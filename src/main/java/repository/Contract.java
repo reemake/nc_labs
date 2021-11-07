@@ -3,6 +3,15 @@ package repository;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * Class which is describing a general contract structure
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see Human
+ * @see Repository
+ * @see MobileConnectionContract
+ * @see InternetConnectionContract
+ * @see TelevisionContract
+ */
 public abstract class Contract {
 
     private int ID;
@@ -11,6 +20,7 @@ public abstract class Contract {
     private int number;
     private Human owner;
 
+    /** Constructor for an object of the Contract abstract class */
     public Contract(int ID, String StartDate, String ExpirationDate, int number, Human owner) {
         this.ID = ID;
         this.startDate = LocalDate.parse(StartDate);

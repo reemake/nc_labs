@@ -3,6 +3,11 @@ package repository;
 import java.time.LocalDate;
 import java.time.Period;
 
+/**
+ * Class which is describing an entity Human
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see Contract
+ */
 public class Human {
 
     private int ID;
@@ -12,6 +17,7 @@ public class Human {
     private String passport;
     private int age;
 
+    /** Default constructor for an object of the Human class */
     public Human() {
         this.ID = 0;
         this.FIO = "";
@@ -21,6 +27,7 @@ public class Human {
         this.age = 0;
     }
 
+    /** Constructor with parameters for an object of the Human class */
     public Human(int ID, String FIO, String Birthday, String gender, String passport) {
         this.ID = ID;
         this.FIO = FIO;
@@ -78,6 +85,11 @@ public class Human {
         this.age = age;
     }
 
+
+    /**
+     * Function of calculating the age
+     * @return age in years
+     */
     public int calcAge() {
         LocalDate currDate = LocalDate.now();
         if (this.birthday != null && currDate != null)

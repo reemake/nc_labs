@@ -1,5 +1,13 @@
 package repository;
 
+/**
+ * Class which is describing an internet connection contract structure
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see Repository
+ * @see Contract
+ * @see MobileConnectionContract
+ * @see TelevisionContract
+ */
 public class InternetConnectionContract extends Contract {
 
     private int speed;
@@ -12,11 +20,13 @@ public class InternetConnectionContract extends Contract {
         this.speed = speed;
     }
 
+    /** Default constructor for an object of the InternetConnectionContract class */
     public InternetConnectionContract() {
         super(0, "", null, 0, null);
         this.speed = 0;
     }
 
+    /** Constructor with parameters for an object of the InternetConnectionContract class */
     public InternetConnectionContract(int ID, String StartDate, String ExpirationDate, int number, Human owner, int speed) {
         super(ID, StartDate, ExpirationDate, number, owner);
         this.speed = speed;

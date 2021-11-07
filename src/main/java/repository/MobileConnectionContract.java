@@ -1,11 +1,20 @@
 package repository;
 
+/**
+ * Class which is describing a mobile connection contract structure
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see Repository
+ * @see Contract
+ * @see InternetConnectionContract
+ * @see TelevisionContract
+ */
 public class MobileConnectionContract extends Contract {
 
     private int minutes;
     private int sms;
     private int traffic;
 
+    /** Default constructor for an object of the MobileConnectionContract class */
     public MobileConnectionContract() {
         super(0, "", null, 0, null);
         this.minutes = 0;
@@ -13,6 +22,7 @@ public class MobileConnectionContract extends Contract {
         this.traffic = 0;
     }
 
+    /** Constructor with parameters for an object of the MobileConnectionContract class */
     public MobileConnectionContract(int ID, String StartDate, String ExpirationDate, int number, Human owner, int minutes, int sms, int traffic) {
         super(ID, StartDate, ExpirationDate, number, owner);
         this.minutes = minutes;
