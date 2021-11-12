@@ -22,7 +22,7 @@ public class InternetConnectionContract extends Contract {
 
     /** Default constructor for an object of the InternetConnectionContract class */
     public InternetConnectionContract() {
-        super(0, "", null, 0, null);
+        super();
         this.speed = 0;
     }
 

@@ -22,7 +22,7 @@ public class TelevisionContract extends Contract {
 
     /** Default constructor for an object of the TelevisionContract class */
     public TelevisionContract() {
-        super(0, "", null, 0, null);
+        super();
         this.channelsPackage = "";
     }
 

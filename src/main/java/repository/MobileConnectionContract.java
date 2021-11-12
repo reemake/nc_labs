@@ -16,7 +16,7 @@ public class MobileConnectionContract extends Contract {
 
     /** Default constructor for an object of the MobileConnectionContract class */
     public MobileConnectionContract() {
-        super(0, "", null, 0, null);
+        super();
         this.minutes = 0;
         this.sms = 0;
         this.traffic = 0;

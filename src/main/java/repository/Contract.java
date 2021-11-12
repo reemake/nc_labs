@@ -20,6 +20,15 @@ public abstract class Contract {
     private int number;
     private Human owner;
 
+    /** Default constructor for an object of the Contract abstract class */
+    public Contract() {
+        this.ID = 0;
+        this.startDate = null;
+        this.expirationDate = null;
+        this.number = 0;
+        this.owner = null;
+    }
+
     /** Constructor for an object of the Contract abstract class */
     public Contract(int ID, String StartDate, String ExpirationDate, int number, Human owner) {
         this.ID = ID;
