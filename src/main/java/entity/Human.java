@@ -1,4 +1,6 @@
-package repository;
+package entity;
+
+import contract.Contract;
 
 import java.time.LocalDate;
 import java.time.Period;

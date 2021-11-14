@@ -1,5 +1,11 @@
 package repository;
 
+import contract.Contract;
+import contract.InternetConnectionContract;
+import contract.MobileConnectionContract;
+import contract.TelevisionContract;
+import entity.Human;
+
 import java.util.Arrays;
 import java.util.Objects;
 

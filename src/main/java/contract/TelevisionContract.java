@@ -1,4 +1,7 @@
-package repository;
+package contract;
+
+import entity.Human;
+import repository.Repository;
 
 /**
  * Class which is describing a television contract structure

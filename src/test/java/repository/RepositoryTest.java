@@ -1,5 +1,10 @@
 package repository;
 
+import contract.Contract;
+import contract.InternetConnectionContract;
+import contract.MobileConnectionContract;
+import contract.TelevisionContract;
+import entity.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

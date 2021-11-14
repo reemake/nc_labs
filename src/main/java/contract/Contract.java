@@ -1,4 +1,7 @@
-package repository;
+package contract;
+
+import entity.Human;
+import repository.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,11 +17,11 @@ import java.util.Objects;
  */
 public abstract class Contract {
 
-    private int ID;
-    private LocalDate startDate;
-    private LocalDate expirationDate;
-    private int number;
-    private Human owner;
+    protected int ID;
+    protected LocalDate startDate;
+    protected LocalDate expirationDate;
+    protected int number;
+    protected Human owner;
 
     /** Default constructor for an object of the Contract abstract class */
     public Contract() {
