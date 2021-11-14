@@ -1,5 +1,3 @@
-package repository;
-
 import contract.Contract;
 import contract.InternetConnectionContract;
 import contract.MobileConnectionContract;
@@ -7,6 +5,7 @@ import contract.TelevisionContract;
 import entity.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import repository.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
