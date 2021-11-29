@@ -1,6 +1,6 @@
-package contract;
+package contracts;
 
-import entity.Human;
+import entities.Human;
 import repository.Repository;
 
 /**

@@ -1,8 +1,10 @@
-import contract.Contract;
-import contract.InternetConnectionContract;
-import contract.MobileConnectionContract;
-import contract.TelevisionContract;
-import entity.Human;
+package repository;
+
+import contracts.Contract;
+import contracts.InternetConnectionContract;
+import contracts.MobileConnectionContract;
+import contracts.TelevisionContract;
+import entities.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.Repository;
@@ -48,7 +50,7 @@ class RepositoryTest {
     }
 
     @Test
-    void deleteContractByIDTestSuccessful() {
+    void deleteContractByIDSuccessfulTest() {
         repo.addContract(someContract1);
         repo.addContract(someContract2);
 
@@ -59,7 +61,7 @@ class RepositoryTest {
     }
 
     @Test
-    void deleteContractByIDTestFromEmptyRepo() {
+    void deleteContractByIDFromEmptyRepoTest() {
         boolean expectedValue = false;
         boolean actualValue = repo.deleteContractByID(23);
 
@@ -67,7 +69,7 @@ class RepositoryTest {
     }
 
     @Test
-    void getContractByIDTestSuccessful() {
+    void getContractByIDSuccessfulTest() {
         repo.addContract(someContract1);
         repo.addContract(someContract2);
 
@@ -78,9 +80,20 @@ class RepositoryTest {
     }
 
     @Test
-    void getContractByIDTestFromEmptyRepo() {
+    void getContractByIDFromEmptyRepoTest() {
         Contract expectedValue = null;
         MobileConnectionContract actualValue = (MobileConnectionContract) repo.getContractByID(23, MobileConnectionContract.class);
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    void getContractByIndexSuccessfulTest() {
+        repo.addContract(someContract1);
+        repo.addContract(someContract2);
+
+        Contract expectedValue = someContract1;
+        MobileConnectionContract actualValue = (MobileConnectionContract) repo.getContractByIndex(0);
 
         assertEquals(expectedValue, actualValue);
     }

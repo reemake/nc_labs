@@ -1,13 +1,20 @@
 package repository;
 
-import contract.Contract;
-import contract.InternetConnectionContract;
-import contract.MobileConnectionContract;
-import contract.TelevisionContract;
-import entity.Human;
+import comparators.ContractIDComparatorImpl;
+import comparators.ContractNumberComparatorImpl;
+import contracts.Contract;
+import contracts.InternetConnectionContract;
+import contracts.MobileConnectionContract;
+import contracts.TelevisionContract;
+import entities.Human;
+import sortings.BubbleSort;
+import sortings.ISorter;
+import sortings.InsertionSort;
 
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Predicate;
+
+import static predicates.RepoPredicates.*;
 
 /**
  * Class which is describing a repository based on expanding array mechanism
@@ -28,6 +35,8 @@ public class Repository {
 
     /** A repository represented by an expanding array */
     private Contract[] repo;
+
+    private ISorter sorter; ////////////////////////////////
 
     /** Default constructor for an object of the Repository class */
     public Repository() {
@@ -59,13 +68,7 @@ public class Repository {
         this.capacity = capacity;
     }
 
-    public Contract[] getRepo() {
-        return repo;
-    }
-
-    public void setRepo(Contract[] repo) {
-        this.repo = repo;
-    }
+    public void setSorter(ISorter sorter) { this.sorter = sorter; }
 
     public boolean isEmpty() {
         return size == 0;
@@ -80,7 +83,6 @@ public class Repository {
         }
         repo = newRepo;
     }
-
 
     /**
      * Adding contract to the repository
@@ -104,7 +106,6 @@ public class Repository {
         return true;
     }
 
-
     /**
      * Helper function to shift array elements to the left, used when deleting
      * @param start starting position
@@ -114,6 +115,13 @@ public class Repository {
             repo[i] = repo[i+1];
         repo[size - 1] = null;
         size--;
+    }
+
+    public void trimToSizeArray() {
+        capacity = size;
+        Contract[] newRepo = new Contract[capacity];
+        System.arraycopy(repo, 0, newRepo, 0, size);
+        repo = newRepo;
     }
 
     /**
@@ -146,6 +154,12 @@ public class Repository {
         return null;
     }
 
+    public Contract getContractByIndex(int index) {
+        if (!isEmpty())
+            return repo[index];
+        return null;
+    }
+
     /**
      * Helper function for toString, used to display the IDs of the contracts available in the repository
      * @return a string containing IDs of the contracts available in the repository
@@ -159,6 +173,24 @@ public class Repository {
             return result;
         }
         else return "-";
+    }
+
+
+    /**
+     * Predicate search method
+     * @param p predicate
+     * @return new instance of Repository class which contains only contracts selected by the predicate
+     */
+    public Repository search(Predicate<Contract> p) {
+        Repository repo1 = new Repository();
+        for (int i = 0; i < size; i++)
+            if (p.test(repo[i]))
+                repo1.addContract(repo[i]);
+        return repo1;
+    }
+
+    public void sort(Comparator<Contract> comp) {
+        sorter.sort(repo, comp);
     }
 
     /**

@@ -1,4 +1,6 @@
-import entity.Human;
+package entities;
+
+import entities.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

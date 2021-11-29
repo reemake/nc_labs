@@ -1,6 +1,6 @@
-package entity;
+package entities;
 
-import contract.Contract;
+import contracts.Contract;
 
 import java.time.LocalDate;
 import java.time.Period;
