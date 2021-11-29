@@ -4,8 +4,18 @@ import contracts.Contract;
 
 import java.util.Comparator;
 
+/**
+ * Class that implements bubble sort
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see ISorter
+ * @see InsertionSort
+ */
 public class BubbleSort implements ISorter {
 
+    /**
+     * @param repo array of Contracts from repository
+     * @param comp comparator
+     */
     @Override
     public void sort(Contract[] repo, Comparator<Contract> comp) {
         boolean swapped = true;

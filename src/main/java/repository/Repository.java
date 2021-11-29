@@ -36,7 +36,8 @@ public class Repository {
     /** A repository represented by an expanding array */
     private Contract[] repo;
 
-    private ISorter sorter; ////////////////////////////////
+    /** An interface object used for sorting */
+    private ISorter sorter;
 
     /** Default constructor for an object of the Repository class */
     public Repository() {
@@ -117,6 +118,9 @@ public class Repository {
         size--;
     }
 
+    /**
+     * Method for standardizing an array
+     */
     public void trimToSizeArray() {
         capacity = size;
         Contract[] newRepo = new Contract[capacity];

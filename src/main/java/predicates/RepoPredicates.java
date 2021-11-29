@@ -4,9 +4,19 @@ import contracts.Contract;
 import contracts.InternetConnectionContract;
 import contracts.MobileConnectionContract;
 import contracts.TelevisionContract;
+import sortings.ISorter;
+import sortings.InsertionSort;
 
 import java.util.function.Predicate;
 
+/**
+ * Class which is listing various predicates
+ * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
+ * @see Contract
+ * @see MobileConnectionContract
+ * @see InternetConnectionContract
+ * @see TelevisionContract
+ */
 public class RepoPredicates {
 
     public static Predicate<Contract> isContractIDLessThan(int id) {
