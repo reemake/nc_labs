@@ -113,7 +113,7 @@ public class Repository {
      */
     private void shiftArrToLeft(int start) {
         for (int i = start; i < size - 1; i++)
-            repo[i] = repo[i+1];
+            repo[i] = repo[i + 1];
         repo[size - 1] = null;
         size--;
     }
