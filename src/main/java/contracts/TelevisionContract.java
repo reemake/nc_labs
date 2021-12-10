@@ -15,14 +15,6 @@ public class TelevisionContract extends Contract {
 
     private String channelsPackage;
 
-    public String getChannelsPackage() {
-        return channelsPackage;
-    }
-
-    public void setChannelsPackage(String channelsPackage) {
-        this.channelsPackage = channelsPackage;
-    }
-
     /** Default constructor for an object of the TelevisionContract class */
     public TelevisionContract() {
         super();
@@ -32,6 +24,14 @@ public class TelevisionContract extends Contract {
     /** Constructor with parameters for an object of the TelevisionContract class */
     public TelevisionContract(int ID, String StartDate, String ExpirationDate, int number, Human owner, String channelsPackage) {
         super(ID, StartDate, ExpirationDate, number, owner);
+        this.channelsPackage = channelsPackage;
+    }
+
+    public String getChannelsPackage() {
+        return channelsPackage;
+    }
+
+    public void setChannelsPackage(String channelsPackage) {
         this.channelsPackage = channelsPackage;
     }
 

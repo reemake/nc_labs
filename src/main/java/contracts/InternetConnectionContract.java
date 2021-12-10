@@ -15,14 +15,6 @@ public class InternetConnectionContract extends Contract {
 
     private int speed;
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     /** Default constructor for an object of the InternetConnectionContract class */
     public InternetConnectionContract() {
         super();
@@ -32,6 +24,14 @@ public class InternetConnectionContract extends Contract {
     /** Constructor with parameters for an object of the InternetConnectionContract class */
     public InternetConnectionContract(int ID, String StartDate, String ExpirationDate, int number, Human owner, int speed) {
         super(ID, StartDate, ExpirationDate, number, owner);
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
