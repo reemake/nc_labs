@@ -11,7 +11,7 @@ import repository.Repository;
 import java.io.*;
 
 /**
- * Class which is describing methods for reading data from CSV-file
+ * Class which is describing method for reading data from CSV-file
  * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
  * @see Repository
  * @see Contract
@@ -85,12 +85,4 @@ public class CsvReader {
     public void setSeparator(char separator) {
         this.separator = separator;
     }
-
-    public static void main(String[] args) {
-        Repository repo = new Repository();
-        CsvReader reader = new CsvReader("C://Users/User/IdeaProjects/netcracker_labs/src/main/resources/contracts_information.csv",  ';', repo);
-        reader.readFromCSV();
-        System.out.println(repo.getContractByIndex(3));
-    }
-
 }
