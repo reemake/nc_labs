@@ -1,0 +1,6 @@
+ContractID[0];ContractNumber[1];ContractStartDate[2];ContractExpirationDate[3];ClientID[4];ClientName[5];ClientGender[6];ClientBirthday[7];ClientPassport[8];ContractType[9];ContractInfo[10]
+1;111;2020-01-01;2022-01-01;1;Jack N.;M;1995-02-01;2222 222222;Mobile;200,2000,30
+2;222;2019-01-01;2021-01-01;2;Clint B.;M;1991-02-02;3333 333333;Television;package1
+3;333;2019-06-01;2020-12-01;3;Kate B.;F;1998-05-07;4444 444444;Mobile;150,1500,50
+4;444;2017-03-03;2022-03-03;4;Anna F.;F;1987-06-17;1111 111111;Internet;60
+5;555;2018-07-02;2021-07-02;5;Elizabeth P.;F;1982-04-20;5555 555555;Internet;80
