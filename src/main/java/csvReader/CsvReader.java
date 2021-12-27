@@ -8,7 +8,11 @@ import com.opencsv.exceptions.CsvValidationException;
 import contracts.*;
 import entities.Human;
 import repository.Repository;
+import validation.Status;
+import validation.ValidationMessage;
+import validation.Validator;
 import java.io.*;
+import java.util.List;
 
 /**
  * Class which is describing method for reading data from CSV-file
@@ -27,12 +31,15 @@ public class CsvReader {
     private char separator;
     /** Object of the Repository class, into which the contract data read from the CSV-file is adding */
     private Repository repo;
+    /** List of validators to check the correctness of data read from CSV-file */
+    private List<Validator> validators;
 
     /** Constructor with parameters for an object of the сsvReader class */
-    public CsvReader(String csvFilePath, char separator, Repository repo) {
+    public CsvReader(String csvFilePath, char separator, Repository repo, List validators) {
         this.csvFilePath = csvFilePath;
         this.separator = separator;
         this.repo = repo;
+        this.validators = validators;
     }
 
     /**
@@ -54,15 +61,48 @@ public class CsvReader {
                 if (nextLine[9].equals("Mobile")) {
                     String[] mobileTariffPlan = nextLine[10].split(",");
                     MobileConnectionContract contract = new MobileConnectionContract(Integer.parseInt(nextLine[0]), nextLine[2], nextLine[3], Integer.parseInt(nextLine[1]), person, Integer.parseInt(mobileTariffPlan[0]), Integer.parseInt(mobileTariffPlan[1]), Integer.parseInt(mobileTariffPlan[2]));
-                    repo.addContract(contract);
+                    ValidationMessage validationMessage = new ValidationMessage();
+                    boolean validationFailed = false;
+                    for (Validator v : validators) {
+                        validationMessage = v.validate(contract);
+                        if (validationMessage.getStatus() == Status.FAIL) {
+                            validationFailed = true;
+                            break;
+                        }
+                    }
+                    if (validationFailed)
+                        System.out.println("Ошибка валидации для контракта с ID = " + contract.getID() + '!' + validationMessage);
+                    else repo.addContract(contract);
                 }
                 else if (nextLine[9].equals("Television")) {
                     TelevisionContract contract = new TelevisionContract(Integer.parseInt(nextLine[0]), nextLine[2], nextLine[3], Integer.parseInt(nextLine[1]), person, nextLine[10]);
-                    repo.addContract(contract);
+                    ValidationMessage validationMessage = new ValidationMessage();
+                    boolean validationFailed = false;
+                    for (Validator v : validators) {
+                        validationMessage = v.validate(contract);
+                        if (validationMessage.getStatus() == Status.FAIL) {
+                            validationFailed = true;
+                            break;
+                        }
+                    }
+                    if (validationFailed)
+                        System.out.println("Ошибка валидации для контракта с ID = " + contract.getID() + '!' + validationMessage);
+                    else repo.addContract(contract);
                 }
                 else if (nextLine[9].equals("Internet")) {
                     InternetConnectionContract contract = new InternetConnectionContract(Integer.parseInt(nextLine[0]), nextLine[2], nextLine[3], Integer.parseInt(nextLine[1]), person, Integer.parseInt(nextLine[10]));
-                    repo.addContract(contract);
+                    ValidationMessage validationMessage = new ValidationMessage();
+                    boolean validationFailed = false;
+                    for (Validator v : validators) {
+                        validationMessage = v.validate(contract);
+                        if (validationMessage.getStatus() == Status.FAIL) {
+                            validationFailed = true;
+                            break;
+                        }
+                    }
+                    if (validationFailed)
+                        System.out.println("Ошибка валидации для контракта с ID = " + contract.getID() + '!' + validationMessage);
+                    else repo.addContract(contract);
                 }
             }
         } catch (IOException | CsvValidationException e) {
@@ -84,5 +124,13 @@ public class CsvReader {
 
     public void setSeparator(char separator) {
         this.separator = separator;
+    }
+
+    public List<Validator> getValidators() {
+        return validators;
+    }
+
+    public void setValidators(List<Validator> validators) {
+        this.validators = validators;
     }
 }

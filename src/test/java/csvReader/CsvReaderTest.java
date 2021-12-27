@@ -3,6 +3,13 @@ package csvReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.Repository;
+import validation.ContractDatesValidator;
+import validation.ContractIDValidator;
+import validation.PersonAgeValidator;
+import validation.Validator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,12 +20,19 @@ class CsvReaderTest {
 
     @BeforeEach
     void setUp() {
+        ContractIDValidator v1 = new ContractIDValidator();
+        ContractDatesValidator v2 = new ContractDatesValidator();
+        PersonAgeValidator v3 = new PersonAgeValidator();
+        List<Validator> validators = new ArrayList();
+        validators.add(v1);
+        validators.add(v2);
+        validators.add(v3);
         repo = new Repository();
-        reader = new CsvReader("C://Users/User/IdeaProjects/netcracker_labs/src/main/resources/contracts_information.csv",  ';', repo);
+        reader = new CsvReader("C://Users/User/IdeaProjects/netcracker_labs/src/main/resources/contracts_information.csv",  ';', repo, validators);
     }
 
     @Test
-    void ifAllLinesBeenReadTest() {
+    void amountOfCorrectContractsTest() {
         reader.readFromCSV();
         int expectedValue = 5;
         int actualValue = repo.getSize();
@@ -67,7 +81,7 @@ class CsvReaderTest {
                         "Пол: F\n" +
                         "Паспорт: 1111 111111\n" +
                         "Возраст: 34";
-        String actualValue = repo.getContractByIndex(3).toString();
+        String actualValue = repo.getContractByIndex(2).toString();
 
         assertEquals(expectedValue, actualValue);
     }
