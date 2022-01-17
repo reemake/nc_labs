@@ -1,6 +1,9 @@
 package validation;
 
 import contracts.Contract;
+import validation.validators.ContractDatesValidator;
+import validation.validators.ContractIDValidator;
+import validation.validators.PersonAgeValidator;
 
 /**
  * Interface which is defining the validation method

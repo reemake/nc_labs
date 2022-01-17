@@ -1,6 +1,9 @@
-package validation;
+package validation.validators;
 
 import contracts.Contract;
+import validation.Status;
+import validation.ValidationMessage;
+import validation.Validator;
 
 import java.time.LocalDate;
 

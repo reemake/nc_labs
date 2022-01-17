@@ -1,5 +1,7 @@
 package csvReader;
 
+import annotations.AutoInjectable;
+import annotations.Configuration;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -32,7 +34,15 @@ public class CsvReader {
     /** Object of the Repository class, into which the contract data read from the CSV-file is adding */
     private Repository repo;
     /** List of validators to check the correctness of data read from CSV-file */
+    @AutoInjectable
     private List<Validator> validators;
+
+    /** Constructor using for creating for an object of the сsvReader class with dependency injection */
+    public CsvReader(Repository repo) {
+        this.csvFilePath = "C://Users/User/IdeaProjects/netcracker_labs/src/main/resources/contracts_information.csv";
+        this.separator = ';';
+        this.repo = repo;
+    }
 
     /** Constructor with parameters for an object of the сsvReader class */
     public CsvReader(String csvFilePath, char separator, Repository repo, List validators) {

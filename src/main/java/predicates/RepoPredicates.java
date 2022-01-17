@@ -4,8 +4,6 @@ import contracts.Contract;
 import contracts.InternetConnectionContract;
 import contracts.MobileConnectionContract;
 import contracts.TelevisionContract;
-import sortings.ISorter;
-import sortings.InsertionSort;
 
 import java.util.function.Predicate;
 

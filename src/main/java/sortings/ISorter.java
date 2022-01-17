@@ -1,11 +1,8 @@
 package sortings;
 
 import contracts.Contract;
-import contracts.InternetConnectionContract;
-import contracts.MobileConnectionContract;
-import contracts.TelevisionContract;
-import entities.Human;
-import repository.Repository;
+import sortings.impl.BubbleSort;
+import sortings.impl.InsertionSort;
 
 import java.util.Comparator;
 

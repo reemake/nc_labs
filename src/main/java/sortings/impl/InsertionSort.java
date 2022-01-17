@@ -1,6 +1,8 @@
-package sortings;
+package sortings.impl;
 
 import contracts.Contract;
+import sortings.ISorter;
+import sortings.impl.BubbleSort;
 
 import java.util.Comparator;
 
@@ -11,6 +13,10 @@ import java.util.Comparator;
  * @see BubbleSort
  */
 public class InsertionSort implements ISorter {
+
+    /** Default constructor for an object of the InsertionSort class */
+    public InsertionSort() {
+    }
 
     /**
      * @param repo array of Contracts from repository

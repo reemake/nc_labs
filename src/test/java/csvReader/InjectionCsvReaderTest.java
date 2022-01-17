@@ -1,34 +1,28 @@
 package csvReader;
 
+import exceptions.InjectionException;
+import injection.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.Repository;
-import validation.validators.ContractDatesValidator;
-import validation.validators.ContractIDValidator;
-import validation.validators.PersonAgeValidator;
-import validation.Validator;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CsvReaderTest {
+public class InjectionCsvReaderTest {
 
     Repository repo;
     CsvReader reader;
 
     @BeforeEach
     void setUp() {
-        ContractIDValidator v1 = new ContractIDValidator();
-        ContractDatesValidator v2 = new ContractDatesValidator();
-        PersonAgeValidator v3 = new PersonAgeValidator();
-        List<Validator> validators = new ArrayList();
-        validators.add(v1);
-        validators.add(v2);
-        validators.add(v3);
-        repo = new Repository();
-        reader = new CsvReader("C://Users/User/IdeaProjects/netcracker_labs/src/main/resources/contracts_information.csv",  ';', repo, validators);
+        try {
+            repo = (new Injector()).inject(new Repository());
+            reader = (new Injector()).inject(new CsvReader(repo));
+        } catch (InjectionException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -45,20 +39,20 @@ class CsvReaderTest {
         reader.readFromCSV();
         String expectedValue =
                 "Контракт на мобильную связь № 111\n" +
-                "ID: 1\n" +
-                "Дата начала контракта: 2020-01-01\n" +
-                "Дата окончания контракта: 2022-01-01\n" +
-                "Количество минут: 200\n" +
-                "Количество смс: 2000\n" +
-                "Траффик: 30 Гб\n" +
-                "\n" +
-                "Владелец контракта: \n" +
-                "ID: 1\n" +
-                "ФИО: Jack N.\n" +
-                "Дата рождения: 1995-02-01\n" +
-                "Пол: M\n" +
-                "Паспорт: 2222 222222\n" +
-                "Возраст: 26";
+                        "ID: 1\n" +
+                        "Дата начала контракта: 2020-01-01\n" +
+                        "Дата окончания контракта: 2022-01-01\n" +
+                        "Количество минут: 200\n" +
+                        "Количество смс: 2000\n" +
+                        "Траффик: 30 Гб\n" +
+                        "\n" +
+                        "Владелец контракта: \n" +
+                        "ID: 1\n" +
+                        "ФИО: Jack N.\n" +
+                        "Дата рождения: 1995-02-01\n" +
+                        "Пол: M\n" +
+                        "Паспорт: 2222 222222\n" +
+                        "Возраст: 26";
         String actualValue = repo.getContractByIndex(0).toString();
 
         assertEquals(expectedValue, actualValue);

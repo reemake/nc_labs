@@ -1,20 +1,15 @@
 package repository;
 
-import comparators.ContractIDComparatorImpl;
-import comparators.ContractNumberComparatorImpl;
+import annotations.AutoInjectable;
 import contracts.Contract;
 import contracts.InternetConnectionContract;
 import contracts.MobileConnectionContract;
 import contracts.TelevisionContract;
 import entities.Human;
-import sortings.BubbleSort;
 import sortings.ISorter;
-import sortings.InsertionSort;
 
 import java.util.*;
 import java.util.function.Predicate;
-
-import static predicates.RepoPredicates.*;
 
 /**
  * Class which is describing a repository based on expanding array mechanism
@@ -37,6 +32,7 @@ public class Repository {
     private Contract[] repo;
 
     /** An interface object used for sorting */
+    @AutoInjectable
     private ISorter sorter;
 
     /** Default constructor for an object of the Repository class */

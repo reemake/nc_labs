@@ -6,15 +6,15 @@ import contracts.InternetConnectionContract;
 import contracts.MobileConnectionContract;
 import contracts.TelevisionContract;
 import entities.Human;
+import exceptions.InjectionException;
+import injection.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.Repository;
-import sortings.impl.BubbleSort;
-import sortings.impl.InsertionSort;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SortingsTest {
+class InjectionSortingsTest {
 
     Human person1;
     Human person2;
@@ -34,7 +34,13 @@ class SortingsTest {
         someContract3 = new InternetConnectionContract(31, "2019-10-01", "2023-10-01", 111, person2, 60);
         someContract4 = new TelevisionContract(45, "2018-11-01", "2022-11-01", 345, person2, "someChannelPackage");
         someContract5 = new InternetConnectionContract(84, "2020-09-01", "2023-09-01", 901, person2, 70);
-        repo = new Repository();
+        try {
+            repo = (new Injector()).inject(new Repository());
+        } catch (InjectionException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         repo.addContract(someContract1);
         repo.addContract(someContract2);
@@ -46,18 +52,6 @@ class SortingsTest {
 
     @Test
     void BubbleSortByContractIDTest() {
-        repo.setSorter(new BubbleSort());
-        repo.sort(new ContractIDComparatorImpl());
-
-        String expectedValue = "12, 31, 45, 53, 84.";
-        String actualValue = repo.getIDofAllContracts();
-
-        assertEquals(expectedValue, actualValue);
-    }
-
-    @Test
-    void InsertionSortByContractIDTest() {
-        repo.setSorter(new InsertionSort());
         repo.sort(new ContractIDComparatorImpl());
 
         String expectedValue = "12, 31, 45, 53, 84.";
@@ -68,7 +62,6 @@ class SortingsTest {
 
     @Test
     void BubbleSortByContractNumberTest() {
-        repo.setSorter(new BubbleSort());
         repo.sort(new ContractNumberComparatorImpl());
 
         int expectedValue = 111;
@@ -77,14 +70,4 @@ class SortingsTest {
         assertEquals(expectedValue, actualValue);
     }
 
-    @Test
-    void InsertionSortByContractNumberTest() {
-        repo.setSorter(new InsertionSort());
-        repo.sort(new ContractNumberComparatorImpl());
-
-        int expectedValue = 111;
-        int actualValue = repo.getContractByIndex(0).getNumber();
-
-        assertEquals(expectedValue, actualValue);
-    }
 }
