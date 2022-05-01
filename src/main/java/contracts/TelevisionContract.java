@@ -3,6 +3,8 @@ package contracts;
 import entities.Human;
 import repository.Repository;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Class which is describing a television contract structure
  * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
@@ -27,6 +29,7 @@ public class TelevisionContract extends Contract {
         this.channelsPackage = channelsPackage;
     }
 
+    @XmlElement
     public String getChannelsPackage() {
         return channelsPackage;
     }

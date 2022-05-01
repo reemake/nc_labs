@@ -3,6 +3,8 @@ package contracts;
 import entities.Human;
 import repository.Repository;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Class which is describing an internet connection contract structure
  * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
@@ -27,6 +29,7 @@ public class InternetConnectionContract extends Contract {
         this.speed = speed;
     }
 
+    @XmlElement
     public int getSpeed() {
         return speed;
     }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:repository xmlns:ns2="repository" size="3" capacity="4">
+    <contract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="mobileConnectionContract">
+        <ID>23</ID>
+        <startDate>2020-11-01</startDate>
+        <expirationDate>2022-11-01</expirationDate>
+        <number>222</number>
+        <owner>
+            <age>26</age>
+            <birthday>1996-02-26</birthday>
+            <FIO>Иванов Иван Иванович</FIO>
+            <gender>Мужской</gender>
+            <ID>211</ID>
+            <passport>9999 999999</passport>
+        </owner>
+        <minutes>228</minutes>
+        <sms>1337</sms>
+        <traffic>777</traffic>
+    </contract>
+    <contract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="televisionContract">
+        <ID>12</ID>
+        <startDate>2019-10-01</startDate>
+        <expirationDate>2023-10-01</expirationDate>
+        <number>152</number>
+        <owner>
+            <age>65</age>
+            <birthday>1956-05-22</birthday>
+            <FIO>Петров Петр Петрович</FIO>
+            <gender>Мужской</gender>
+            <ID>25</ID>
+            <passport>7777 777777</passport>
+        </owner>
+        <channelsPackage>someChannelPackage</channelsPackage>
+    </contract>
+    <contract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="internetConnectionContract">
+        <ID>33</ID>
+        <startDate>2019-10-01</startDate>
+        <expirationDate>2023-10-01</expirationDate>
+        <number>4</number>
+        <owner>
+            <age>39</age>
+            <birthday>1982-11-29</birthday>
+            <FIO>Сидоров Виктор Александрович</FIO>
+            <gender>Мужской</gender>
+            <ID>132</ID>
+            <passport>8888 888888</passport>
+        </owner>
+        <speed>60</speed>
+    </contract>
+</ns2:repository>

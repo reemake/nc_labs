@@ -3,6 +3,8 @@ package contracts;
 import entities.Human;
 import repository.Repository;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Class which is describing a mobile connection contract structure
  * @author Nikita Safonov, student of AMM VSU, 3rd year, 3rd group
@@ -33,6 +35,7 @@ public class MobileConnectionContract extends Contract {
         this.traffic = traffic;
     }
 
+    @XmlElement
     public int getMinutes() {
         return minutes;
     }
@@ -41,6 +44,7 @@ public class MobileConnectionContract extends Contract {
         this.minutes = minutes;
     }
 
+    @XmlElement
     public int getSms() {
         return sms;
     }
@@ -49,6 +53,7 @@ public class MobileConnectionContract extends Contract {
         this.sms = sms;
     }
 
+    @XmlElement
     public int getTraffic() {
         return traffic;
     }

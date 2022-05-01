@@ -8,6 +8,7 @@ import contracts.TelevisionContract;
 import entities.Human;
 import sortings.ISorter;
 
+import javax.xml.bind.annotation.*;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -20,19 +21,26 @@ import java.util.function.Predicate;
  * @see InternetConnectionContract
  * @see TelevisionContract
  */
+@XmlRootElement(name = "repository", namespace = "repository")
+@XmlSeeAlso({MobileConnectionContract.class, InternetConnectionContract.class, TelevisionContract.class})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Repository {
 
     /** Current number of contracts in the repository */
+    @XmlAttribute
     private int size;
 
     /** Max number of contracts in the repository */
+    @XmlAttribute
     private int capacity;
 
     /** A repository represented by an expanding array */
+    @XmlElement(name = "contract")
     private Contract[] repo;
 
     /** An interface object used for sorting */
     @AutoInjectable
+    @XmlTransient
     private ISorter sorter;
 
     /** Default constructor for an object of the Repository class */
@@ -228,5 +236,4 @@ public class Repository {
         result = 31 * result + Arrays.hashCode(repo);
         return result;
     }
-
 }

@@ -1,8 +1,14 @@
 package contracts;
 
 import entities.Human;
+import jaxb.DateAdapter;
 import repository.*;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -15,6 +21,7 @@ import java.util.Objects;
  * @see InternetConnectionContract
  * @see TelevisionContract
  */
+@XmlType(propOrder = {"ID", "startDate", "expirationDate", "number", "owner"})
 public abstract class Contract {
 
     protected int ID;
@@ -41,6 +48,7 @@ public abstract class Contract {
         this.owner = owner;
     }
 
+    @XmlElement
     public int getID() {
         return ID;
     }
@@ -49,6 +57,8 @@ public abstract class Contract {
         this.ID = ID;
     }
 
+    @XmlElement
+    @XmlJavaTypeAdapter(value = DateAdapter.class)
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -57,6 +67,8 @@ public abstract class Contract {
         this.startDate = LocalDate.parse(StartDate);
     }
 
+    @XmlElement
+    @XmlJavaTypeAdapter(value = DateAdapter.class)
     public LocalDate getExpirationDate() {
         return expirationDate;
     }
@@ -65,6 +77,7 @@ public abstract class Contract {
         this.expirationDate = LocalDate.parse(ExpirationDate);
     }
 
+    @XmlElement
     public int getNumber() {
         return number;
     }
@@ -73,6 +86,7 @@ public abstract class Contract {
         this.number = number;
     }
 
+    @XmlElement
     public Human getOwner() {
         return owner;
     }

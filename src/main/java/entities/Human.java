@@ -1,7 +1,9 @@
 package entities;
 
 import contracts.Contract;
+import jaxb.DateAdapter;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -55,6 +57,7 @@ public class Human {
         this.FIO = FIO;
     }
 
+    @XmlJavaTypeAdapter(value = DateAdapter.class)
     public LocalDate getBirthday() {
         return birthday;
     }
